@@ -1,0 +1,23 @@
+div.container.mx-auto.p-6
+  / ====== Title ======
+  h1.text-3xl.font-bold.mb-6 = @recipe.name
+
+  / ====== Recipe Card ======
+  div.bg-white.shadow-lg.rounded-xl.p-6.space-y-6
+    / Ingredients
+    div
+      h2.text-xl.font-semibold.mb-2 Ingredients
+      ul.list-disc.list-inside.text-gray-700
+        - @recipe.ingredients.to_s.split("\n").each do |ingredient|
+          li = ingredient
+
+    / Instructions
+    div
+      h2.text-xl.font-semibold.mb-2 Instructions
+      p.text-gray-700.whitespace-pre-line = @recipe.instructions
+
+  / ====== Actions ======
+  div.mt-6.flex.space-x-4
+    = link_to "Edit", edit_recipe_path(@recipe), class: "bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600"
+    = link_to "Delete", recipe_path(@recipe), method: :delete, data: { confirm: "Are you sure?" }, class: "bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+    = link_to "Back to Recipes", recipes_path, class: "bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300"

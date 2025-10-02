@@ -1,0 +1,25 @@
+div.container.mx-auto.p-6
+
+  h1.text-3xl.font-bold.mb-6 Edit Recipe
+
+  div.bg-white.shadow-lg.rounded-xl.p-6
+    = form_with model: @recipe, url: recipe_path(@recipe), method: "put" do |f|
+      / Recipe Name
+      div.mb-4
+        = f.label :name, "Recipe Name", class: "block text-sm font-medium text-gray-700 mb-1"
+        = f.text_field :name, class: "w-full border rounded-lg p-2"
+
+      / Ingredients
+      div.mb-4
+        = f.label :ingredients, "Ingredients", class: "block text-sm font-medium text-gray-700 mb-1"
+        = f.text_area :ingredients, rows: 4, class: "w-full border rounded-lg p-2"
+
+      / Instructions
+      div.mb-6
+        = f.label :instructions, "Instructions", class: "block text-sm font-medium text-gray-700 mb-1"
+        = f.text_area :instructions, rows: 6, class: "w-full border rounded-lg p-2"
+
+      / Action Buttons
+      div.flex.space-x-4
+        = f.submit "Update Recipe", class: "bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+        = link_to "Cancel", recipe_path(@recipe), class: "bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300"

@@ -60,8 +60,14 @@ group :development do
   # gem "spring"
 end
 
+gem 'slim-rails', '~> 3.7'
+
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "tailwindcss-ruby", "~> 4.1"
+
+gem "tailwindcss-rails", "~> 4.3"
