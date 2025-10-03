@@ -14,9 +14,10 @@ class RecipesController < ApplicationController
   def create
     recipe = Recipe.new(create_params)
     if recipe.save
+      flash[:success] = "Recipe created successfully"
       redirect_to recipes_path
     else
-      flash[:error] = "Failed to create recipe"
+      flash[:error] = "Failed to create recipe - ensure all fields are filled and the recipe name is unique"
       redirect_to recipes_path
     end
   end
@@ -28,6 +29,7 @@ class RecipesController < ApplicationController
   def update
     recipe = Recipe.find(params[:id])
     if recipe.update(update_params)
+      flash[:success] = "Recipe updated successfully"
       redirect_to recipe_path(recipe)
     else
       flash[:error] = "Failed to update recipe"
@@ -38,6 +40,7 @@ class RecipesController < ApplicationController
   def destroy
     recipe = Recipe.find(params[:id])
     if recipe.destroy
+      flash[:success] = "Recipe deleted successfully"
       redirect_to recipes_path
     else
       flash[:error] = "Failed to delete recipe"
